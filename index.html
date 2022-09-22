@@ -23,6 +23,7 @@
       defer
     ></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    
     <title>Shopping Cart / Products</title>
   </head>
   <body>
@@ -174,9 +175,14 @@
         <span class="cart-total-price"></span>
       </div>
       <button class="btn btn-dark btnCart" type="button" >Vaciar Carrito</button>
-      <button class="btn btn-success btn-purchase" type="button">
-        Comprar
-      </button>
+      <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-purchase" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Comprar
+</button>
+
+<!-- Modal -->
+
+      
     </section>
     <!-- Contacto -->
     <sectiion class="contact" id="contact">

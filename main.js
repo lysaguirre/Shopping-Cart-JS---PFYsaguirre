@@ -4,6 +4,7 @@ let productContainer = document.querySelector(".shop-items");
 let totalProduct = document.querySelector(".cart-total-title");
 let btnCart = document.querySelector(".btnCart");
 let cartNumber = document.querySelector(".cartNumber");
+let purchaseBtn = document.querySelector(".btn-purchase");
 
 // peticion de productos
 const options = {
@@ -16,14 +17,7 @@ const options = {
 
 let res = await fetch("https://api.escuelajs.co/api/v1/products/", options);
 let data = await res.json();
-//local storage
-document.addEventListener("DOMContentLoaded", () => {
-  if (localStorage.getItem("shoppingCartArray")) {
-    shoppingCartArray = JSON.parse(localStorage.getItem("shoppingCartArray"));
-    drawProducts();
-    getTotal();
-  }
-});
+
 //pintamos solo 20 productos
 let productsArray = data.slice(1, 19);
 
@@ -35,7 +29,7 @@ btnCart.addEventListener("click", () => {
     icon: "warning",
     showCancelButton: true,
     confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
+    cancelButtonColor: `$terceario`,
     confirmButtonText: "Aceptar",
   }).then((result) => {
     if (result.isConfirmed) {
@@ -135,7 +129,7 @@ function getTotal() {
   }, 0);
   totalProduct.innerText = `Total: $${total}`;
 }
-
+// imprimir tabla de productos
 function drawProducts() {
   cartContainer.innerHTML = "";
   shoppingCartArray.forEach((item) => {
@@ -159,19 +153,13 @@ function drawProducts() {
         type="number"
         value="${item.quantity}"
       />
-      <button class="btn btn-danger" type="button">X</button>
+      <button class="btn btn-danger" type="button"><i class="fa-solid fa-trash"></i></button>
     </div> 
   </div>
   `;
 
     //contador del carrito
     cartNumber.innerText = shoppingCartArray.length;
-
-    //local storage
-    localStorage.setItem(
-      "shoppingCartArray",
-      JSON.stringify(shoppingCartArray)
-    );
   });
 
   removeProducts();
@@ -240,21 +228,4 @@ function removeProducts() {
   });
 }
 
-// alert para finalizar compra
-// Swal.fire({
-//   title: 'Are you sure?',
-//   text: "You won't be able to revert this!",
-//   icon: 'warning',
-//   showCancelButton: true,
-//   confirmButtonColor: '#3085d6',
-//   cancelButtonColor: '#d33',
-//   confirmButtonText: 'Yes, delete it!'
-// }).then((result) => {
-//   if (result.isConfirmed) {
-//     Swal.fire(
-//       'Deleted!',
-//       'Your file has been deleted.',
-//       'success'
-//     )
-//   }
-// })
+//boton comprar
