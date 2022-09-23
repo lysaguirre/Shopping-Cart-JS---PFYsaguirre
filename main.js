@@ -5,7 +5,7 @@ let totalProduct = document.querySelector(".cart-total-title");
 let btnCart = document.querySelector(".btnCart");
 let cartNumber = document.querySelector(".cartNumber");
 let cartModal = document.querySelector(".cart-modal");
-let modalBody = document.querySelector(".modal-body");
+
 let cartContainer = document.querySelector(".modal-body");
 
 // peticion de productos
@@ -207,7 +207,7 @@ function removeProducts() {
   removeBtns.forEach((btn) => {
     btn.addEventListener("click", (event) => {
       //buscamos el titulo del producto
-      console.log("se hace click");
+
       let actualProductTitle =
         event.target.parentElement.parentElement.childNodes[1].innerText;
       //producto con ese titulo
