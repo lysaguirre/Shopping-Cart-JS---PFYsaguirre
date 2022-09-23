@@ -78,7 +78,7 @@ addBtns.forEach((btn) => {
     // id para objeto actual
     let actualProduct = productsArray.find((item) => item.id == actualID);
 
-    if (actualProduct.quantity === undefined) {
+    if (actualProduct.quantity == undefined) {
       actualProduct.quantity = 1;
     }
     // verificar que no se imprima nuevamente el producto sino que se sume
@@ -111,7 +111,6 @@ addBtns.forEach((btn) => {
     });
 
     //actualizar total
-    drawProducts();
 
     getTotal();
 
@@ -179,7 +178,6 @@ function updateNumberInInput() {
 
   inputNumber.forEach((item) => {
     item.addEventListener("click", (event) => {
-      console.log("se hace clic");
       //buscamos el titulo del producto
 
       let actualProductTitle =
@@ -209,6 +207,7 @@ function removeProducts() {
   removeBtns.forEach((btn) => {
     btn.addEventListener("click", (event) => {
       //buscamos el titulo del producto
+      console.log("se hace click");
       let actualProductTitle =
         event.target.parentElement.parentElement.childNodes[1].innerText;
       //producto con ese titulo
