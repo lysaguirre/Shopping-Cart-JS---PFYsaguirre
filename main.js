@@ -5,6 +5,7 @@ let totalProduct = document.querySelector(".cart-total-title");
 let btnCart = document.querySelector(".btnCart");
 let cartNumber = document.querySelector(".cartNumber");
 let cartModal = document.querySelector(".cart-modal");
+let paymentBtn = document.getElementById("payment-btn");
 
 let cartContainer = document.querySelector(".modal-body");
 
@@ -247,3 +248,8 @@ function modalClick() {
     updateNumberInInput
   );
 }
+
+//boton de pago
+paymentBtn.addEventListener("click", () => {
+  Swal.fire("Good job!", "You clicked the button!", "success");
+});

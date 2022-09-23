@@ -16,7 +16,8 @@ $fondo: lightgray;
 // NAVBAR /
 /* NAVBAR */
 nav {
-  font-weight: 750;
+  font-weight: 400;
+
   background-color: $terceario;
 }
 
@@ -67,6 +68,17 @@ body {
 //1er section
 .content-section {
   margin: 1em;
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    color: $principal;
+    font-size: 50px;
+    font-weight: 700;
+    background-color: $terceario;
+    font-style: italic;
+    border-radius: 10px;
+  }
   .container {
     max-width: 900px;
     margin: 0 auto;
@@ -215,4 +227,13 @@ footer {
   font-weight: 600;
 }
 
-// modal
+// modal pago
+
+#envio {
+  background-color: #eee;
+  border-radius: 20px;
+  padding: 20px;
+  h3 {
+    font-style: italic;
+  }
+}
