@@ -16,12 +16,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-      defer
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous" defer></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
     
     <title>Shopping Cart / Products</title>
@@ -60,8 +56,10 @@
               >
             </li>
           </ul>
-          
-          <a href="#cart-total" class="btn btn-dark " >Ver carrito <i class="fa-solid fa-cart-shopping "></i> <span class="cartNumber">0</span></a>
+           <!-- Button trigger modal -->
+          <button type="button" class="btn btn-dark cart-modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Ver Carrito <i class="fa-solid fa-cart-shopping "></i> <span class="cartNumber">0</span>
+          </button>
             
           
         </div>
@@ -92,27 +90,37 @@
       </div>
     </section>
     <section class="container content-section" id="cart-container">
-      <h2 class="section-header">Carrito</h2>
-      <div class="cart-row">
-        <span class="cart-item cart-header cart-column">Item</span>
-        <span class="cart-price cart-header cart-column">Precio</span>
-        <span class="cart-quantity cart-header cart-column">Cantidad</span>
-      </div>
+      
       <div class="cart-items">
-      <!-- se injecta por js -->
+      <!-- se inyecta por js -->
 
+    
+      
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tu carrito</h5>
+        
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body">
+       
       </div>
       <div class="cart-total" id="cart-total">
         <strong class="cart-total-title">Total</strong>
         <span class="cart-total-price"></span>
       </div>
-      <button class="btn btn-dark btnCart" type="button" >Vaciar Carrito</button>
-      <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-purchase" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Comprar
-</button>
+      <div class="modal-footer">
+        <button class="btn btn-dark btnCart" type="button" >Vaciar Carrito</button>
+        <button type="button" class="btn btn-primary">Comprar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-<!-- Modal -->
 
       
     </section>

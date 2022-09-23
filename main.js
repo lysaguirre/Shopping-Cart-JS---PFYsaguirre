@@ -4,7 +4,9 @@ let productContainer = document.querySelector(".shop-items");
 let totalProduct = document.querySelector(".cart-total-title");
 let btnCart = document.querySelector(".btnCart");
 let cartNumber = document.querySelector(".cartNumber");
-let purchaseBtn = document.querySelector(".btn-purchase");
+let cartModal = document.querySelector(".cart-modal");
+let modalBody = document.querySelector(".modal-body");
+let cartContainer = document.querySelector(".modal-body");
 
 // peticion de productos
 const options = {
@@ -65,7 +67,6 @@ productsArray.forEach((product) => {
 let addBtns = document.querySelectorAll(".shop-item-button");
 
 addBtns = [...addBtns];
-let cartContainer = document.querySelector(".cart-items");
 
 addBtns.forEach((btn) => {
   btn.addEventListener("click", (e) => {
@@ -130,6 +131,7 @@ function getTotal() {
   totalProduct.innerText = `Total: $${total}`;
 }
 // imprimir tabla de productos
+
 function drawProducts() {
   cartContainer.innerHTML = "";
   shoppingCartArray.forEach((item) => {
@@ -161,8 +163,13 @@ function drawProducts() {
     //contador del carrito
     cartNumber.innerText = shoppingCartArray.length;
   });
-
+  modalClick();
+  updateNumberInInput();
+  getTotal();
   removeProducts();
+
+  //numero de carrito en 0
+  cartNumber.innerText = shoppingCartArray.length;
 }
 
 function updateNumberInInput() {
@@ -172,9 +179,12 @@ function updateNumberInInput() {
 
   inputNumber.forEach((item) => {
     item.addEventListener("click", (event) => {
+      console.log("se hace clic");
       //buscamos el titulo del producto
+
       let actualProductTitle =
         event.target.parentElement.parentElement.childNodes[1].innerText;
+
       let actualProductQuantity = parseInt(event.target.value);
       //producto con ese titulo
       let actualProductObject = shoppingCartArray.find(
@@ -221,6 +231,7 @@ function removeProducts() {
       });
 
       // termina sweetAlert
+      modalClick();
       drawProducts();
       getTotal();
       updateNumberInInput();
@@ -228,4 +239,12 @@ function removeProducts() {
   });
 }
 
-//boton comprar
+//modal evento
+function modalClick() {
+  cartModal.addEventListener(
+    "click",
+    drawProducts,
+    getTotal,
+    updateNumberInInput
+  );
+}
