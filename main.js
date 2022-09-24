@@ -22,13 +22,6 @@ let data = await res.json();
 
 let shoppingCartArray = [];
 
-//localStorage
-document.addEventListener("DOMContentLoaded", () => {
-  if (localStorage.getItem("shoppingCartArray")) {
-    shoppingCartArray = JSON.parse(localStorage.getItem("shoppingCartArray"));
-    modalClick();
-  }
-});
 // carrito vacio al no cargar productos
 totalProduct.innerHTML = `<h4 class="text-center"> tu carrito esta vacio</h4>`;
 //pintamos solo 20 productos
@@ -115,7 +108,7 @@ addBtns.forEach((btn) => {
 
     //sweet alert
     Swal.fire({
-      position: "top-end",
+      position: "top",
       icon: "success",
       title: "Producto agregado con éxito",
       width: `500px`,
