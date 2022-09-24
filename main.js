@@ -1,4 +1,3 @@
-let shoppingCartArray = [];
 let total = 0;
 let productContainer = document.querySelector(".shop-items");
 let totalProduct = document.querySelector(".cart-total-title");
@@ -21,6 +20,15 @@ const options = {
 let res = await fetch("https://api.escuelajs.co/api/v1/products/", options);
 let data = await res.json();
 
+let shoppingCartArray = [];
+
+//localStorage
+document.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem("shoppingCartArray")) {
+    shoppingCartArray = JSON.parse(localStorage.getItem("shoppingCartArray"));
+    modalClick();
+  }
+});
 //pintamos solo 20 productos
 let productsArray = data.slice(1, 19);
 
