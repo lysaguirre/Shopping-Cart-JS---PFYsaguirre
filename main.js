@@ -29,6 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
     modalClick();
   }
 });
+// carrito vacio al no cargar productos
+totalProduct.innerHTML = `<h4 class="text-center"> tu carrito esta vacio</h4>`;
 //pintamos solo 20 productos
 let productsArray = data.slice(1, 19);
 
@@ -46,8 +48,11 @@ btnCart.addEventListener("click", () => {
     if (result.isConfirmed) {
       Swal.fire("¡Listo!", "¡Carrito vacio!", "success");
       shoppingCartArray.length = 0;
+
       drawProducts();
       getTotal();
+      // carrito vaciado
+      totalProduct.innerHTML = `<h4 class="text-center"> tu carrito esta vacio</h4>`;
     }
   });
 });
@@ -87,7 +92,7 @@ addBtns.forEach((btn) => {
     // id para objeto actual
     let actualProduct = productsArray.find((item) => item.id == actualID);
 
-    if (actualProduct.quantity == undefined) {
+    if (actualProduct.quantity === undefined) {
       actualProduct.quantity = 1;
     }
     // verificar que no se imprima nuevamente el producto sino que se sume
@@ -141,7 +146,7 @@ function getTotal() {
 // imprimir tabla de productos
 
 function drawProducts() {
-  cartContainer.innerHTML = "";
+  cartContainer.innerHTML = ``;
   shoppingCartArray.forEach((item) => {
     cartContainer.innerHTML += `
     
@@ -197,7 +202,7 @@ function updateNumberInInput() {
       let actualProductObject = shoppingCartArray.find(
         (item) => item.title == actualProductTitle
       );
-      console.log(actualProductObject);
+
       // actualizar el valor por cantidad
 
       actualProductObject.quantity = actualProductQuantity;
@@ -256,3 +261,13 @@ function modalClick() {
     updateNumberInInput
   );
 }
+
+let cartPayment = document.querySelector(".cart-payment");
+
+cartPayment.addEventListener("click", () => {
+  Swal.fire(
+    "¡Pedido Realizado!",
+    "En instantes recibirás un mail con tu pedido detallado.",
+    "success"
+  );
+});
