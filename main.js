@@ -248,8 +248,3 @@ function modalClick() {
     updateNumberInInput
   );
 }
-
-//boton de pago
-paymentBtn.addEventListener("click", () => {
-  Swal.fire("Good job!", "You clicked the button!", "success");
-});
